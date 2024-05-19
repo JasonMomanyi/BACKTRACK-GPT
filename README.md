@@ -45,6 +45,10 @@ Project by...
 * [`JASON MOMANYI`](https://github.com/JasonMomanyi) ***Author, Owner***
 
 
+- WhatsApp pairing code script by [PRINCE-GDS](https://github.com/PRINCE-GDS/THE-PRINCE-BOT)
+
+
+
 ## License
 
 [MIT license] (https://github.com/JasonMomanyi/BACKTRACK-GPT/blob/main/LICENSE)
