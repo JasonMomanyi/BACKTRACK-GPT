@@ -1,0 +1,8 @@
+{
+    "clientID": "your-client-id",
+    "serverToken": "your-server-token",
+    "clientToken": "your-client-token",
+    "encKey": "your-encryption-key",
+    "macKey": "your-mac-key"
+  }
+  

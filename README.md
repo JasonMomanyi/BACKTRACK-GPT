@@ -25,6 +25,10 @@ This project integrates WhatsApp with OpenAI's GPT-3 using the `@whiskeysockets/
 ## Deployment
 
 The project is ready to be deployed on a web hosting service ie heroku.
+To link the project to heroku, fork the repo and use this link whilst replacing your-user-name and fork-name with actual details
+
+https://heroku.com/deploy?template=https://github.com/yourusername/whatsapp-gpt-bot
+
 
 # Credits
 
