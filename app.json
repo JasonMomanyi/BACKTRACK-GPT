@@ -1,10 +1,14 @@
 {
   "name": "BACKTRACK-GPT",
   "description": "WhatsApp bot using OpenAI GPT-3 and @whiskeysockets/baileys",
-  "repository": "https://github.com/yourusername/whatsapp-gpt-bot",
+  "repository": "https://github.com/yourusername/JasonMomanyi",
   "env": {
     "OPENAI_API_KEY": {
       "description": "API Key for OpenAI",
+      "required": true
+    },
+    "API_PASSWORD": {
+      "description": "Password for bot authentication",
       "required": true
     }
   },

@@ -1,5 +1,4 @@
 const { default: makeWASocket, useSingleFileAuthState } = require('@whiskeysockets/baileys');
-const { writeFileSync } = require('fs');
 const { Configuration, OpenAIApi } = require('openai');
 const P = require('pino');
 require('dotenv').config();
@@ -10,8 +9,10 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-// Initialize WhatsApp socket
-const { state, saveState } = useSingleFileAuthState('./auth_info.json');
+// Initialize WhatsApp socket with creds.json
+const { state, saveState } = useSingleFileAuthState('./creds.json');
+
+const password = process.env.API_PASSWORD;
 
 const startSock = async () => {
   const sock = makeWASocket({
@@ -30,18 +31,15 @@ const startSock = async () => {
       const from = msg.key.remoteJid;
 
       if (text && from) {
-        try {
-          const response = await openai.createCompletion({
-            model: 'text-davinci-003',
-            prompt: text,
-            max_tokens: 150,
-          });
-
-          await sock.sendMessage(from, {
-            text: response.data.choices[0].text.trim(),
-          });
-        } catch (err) {
-          console.error('Error: ', err);
+        if (text.startsWith('!auth ')) {
+          const providedPassword = text.split(' ')[1];
+          if (providedPassword === password) {
+            await sock.sendMessage(from, { text: 'Authentication successful! You can now use the bot.' });
+          } else {
+            await sock.sendMessage(from, { text: 'Authentication failed. Incorrect password.' });
+          }
+        } else {
+          await sock.sendMessage(from, { text: 'Please authenticate first by sending !auth <password>.' });
         }
       }
     }

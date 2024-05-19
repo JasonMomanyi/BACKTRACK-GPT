@@ -28,6 +28,10 @@ The project is ready to be deployed on a web hosting service ie heroku.
 To link the project to heroku, fork the repo and use this link whilst replacing your-user-name and fork-name with actual details
 
 https://heroku.com/deploy?template=https://github.com/yourusername/whatsapp-gpt-bot
+# BACKTRACK-GPT
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/your-user-name/BACKTRACK-GPT)
+
 
 
 # Credits
