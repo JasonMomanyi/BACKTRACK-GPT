@@ -1,7 +1,7 @@
 {
   "name": "BACKTRACK-GPT",
   "version": "1.0.0",
-  "description": "A ChatGPT integration for whatsapp",
+  "description": "A chatGPT integration for whatsapp",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

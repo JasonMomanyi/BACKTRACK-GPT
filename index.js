@@ -25,30 +25,22 @@ const startSock = async () => {
     if (type === 'notify') {
       const msg = messages[0];
       if (!msg.message) return;
-
-      const text = msg.message.conversation || msg.message.extendedTextMessage?.text || '';
+      const text = msg.message.conversation;
       const from = msg.key.remoteJid;
 
       if (text && from) {
-        const response = await getChatGptResponse(text);
-        await sock.sendMessage(from, { text: response });
+        // Generate a response using ChatGPT
+        const response = await openai.createChatCompletion({
+          model: 'gpt-4',
+          messages: [{ role: 'user', content: text }],
+        });
+
+        const reply = response.data.choices[0].message.content;
+
+        await sock.sendMessage(from, { text: reply });
       }
     }
   });
-};
-
-const getChatGptResponse = async (message) => {
-  try {
-    const completion = await openai.createCompletion({
-      model: 'text-davinci-003',
-      prompt: message,
-      max_tokens: 150,
-    });
-    return completion.data.choices[0].text.trim();
-  } catch (error) {
-    console.error('Error with OpenAI API integratin for BACKTRACK request:', error);
-    return 'Sorry, I encountered an error while processing your request.';
-  }
 };
 
 startSock();
