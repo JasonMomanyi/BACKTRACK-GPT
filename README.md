@@ -22,6 +22,12 @@ This project integrates WhatsApp with OpenAI's GPT-3 using the `@whiskeysockets/
 ## Fork
  Fork this repo by tapping  [here](https://github.com/JasonMomanyi/BACKTRACK-GPT)
 
+
+## ` Pair On reptil`
+<h2 align="left">  <a href="https://replit.com/@botdreaded/Pairing-Dreaded"><img src="https://repl.it/badge/github/quiec/whatsasena" />
+</a>
+</h2>
+
 ## Deployment
 
 The project is ready to be deployed on a web hosting service ie heroku.
