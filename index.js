@@ -12,8 +12,6 @@ const openai = new OpenAIApi(configuration);
 // Initialize WhatsApp socket with creds.json
 const { state, saveState } = useSingleFileAuthState('./creds.json');
 
-const password = process.env.API_PASSWORD;
-
 const startSock = async () => {
   const sock = makeWASocket({
     logger: P({ level: 'silent' }),
@@ -27,23 +25,30 @@ const startSock = async () => {
     if (type === 'notify') {
       const msg = messages[0];
       if (!msg.message) return;
-      const text = msg.message.conversation;
+
+      const text = msg.message.conversation || msg.message.extendedTextMessage?.text || '';
       const from = msg.key.remoteJid;
 
       if (text && from) {
-        if (text.startsWith('!auth ')) {
-          const providedPassword = text.split(' ')[1];
-          if (providedPassword === password) {
-            await sock.sendMessage(from, { text: 'Authentication successful! You can now use the bot.' });
-          } else {
-            await sock.sendMessage(from, { text: 'Authentication failed. Incorrect password.' });
-          }
-        } else {
-          await sock.sendMessage(from, { text: 'Please authenticate first by sending !auth <password>.' });
-        }
+        const response = await getChatGptResponse(text);
+        await sock.sendMessage(from, { text: response });
       }
     }
   });
+};
+
+const getChatGptResponse = async (message) => {
+  try {
+    const completion = await openai.createCompletion({
+      model: 'text-davinci-003',
+      prompt: message,
+      max_tokens: 150,
+    });
+    return completion.data.choices[0].text.trim();
+  } catch (error) {
+    console.error('Error with OpenAI API request:', error);
+    return 'Sorry, I encountered an error while processing your request.';
+  }
 };
 
 startSock();
