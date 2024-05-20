@@ -46,7 +46,7 @@ const getChatGptResponse = async (message) => {
     });
     return completion.data.choices[0].text.trim();
   } catch (error) {
-    console.error('Error with OpenAI API request:', error);
+    console.error('Error with OpenAI API integratin for BACKTRACK request:', error);
     return 'Sorry, I encountered an error while processing your request.';
   }
 };
