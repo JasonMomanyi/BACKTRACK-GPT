@@ -1,17 +1,20 @@
 {
-  "name": "BACKTRACK-GPT",
+  "name": "your-app-name",
   "version": "1.0.0",
-  "description": "WhatsApp bot using OpenAI GPT-3 and @whiskeysockets/baileys",
+  "description": "Your app description",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "install": "./install.sh"
+    "start": "node index.js"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "^5.0.0",
-    "dotenv": "^16.0.0",
-    "openai": "^3.0.0"
+    "@whiskeysockets/baileys": "^6.5.0",
+    "openai": "^3.0.0",
+    "pino": "^8.1.0",
+    "dotenv": "^16.0.3"
   },
-  "author": "https://github.com/JasonMomanyi",
-  "license": "MIT"
+  "engines": {
+    "node": "20.x"
+  },
+  "author": "Your Name",
+  "license": "ISC"
 }
