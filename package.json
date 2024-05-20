@@ -1,7 +1,7 @@
 {
-  "name": "your-app-name",
+  "name": "BACKTRACK-GPT",
   "version": "1.0.0",
-  "description": "Your app description",
+  "description": "A ChatGPT integration for whatsapp",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -13,8 +13,8 @@
     "dotenv": "^16.0.3"
   },
   "engines": {
-    "node": "20.x"
+    "node": "20.13.1"
   },
-  "author": "Your Name",
-  "license": "ISC"
+  "author": "Jason Momanyi",
+  "license": "MIT"
 }
